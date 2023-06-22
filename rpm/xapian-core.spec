@@ -31,11 +31,10 @@ PackagedBy: nephros
 Categories:
   - System
   - Utility
-Custom:
-  Repo: https://git.xapian.org/xapian
-  PackagingRepo: https://github.com/sailfishos-chum/xapian-core
 Links:
   Homepage: %{url}
+  Help: https://www.lesbonscomptes.com/recoll/pages/documentation.html
+  Donation: https://www.lesbonscomptes.com/donations/index.html
 %endif
 
 
@@ -57,9 +56,6 @@ also supports a rich set of boolean query operators.
 PackagedBy: nephros
 Categories:
   - Library
-Custom:
-  Repo: https://git.xapian.org/xapian
-  PackagingRepo: https://github.com/sailfishos-chum/xapian-core
 Links:
   Homepage: %{url}
   Help: https://www.lesbonscomptes.com/recoll/pages/documentation.html
@@ -76,7 +72,7 @@ Requires:   %{name}-libs
 %{summary}.
 
 %prep
-%setup -q -n %{name}-%{version}/upstream
+%setup -q -n %{name}-%{version}
 
 # >> setup
 # << setup
