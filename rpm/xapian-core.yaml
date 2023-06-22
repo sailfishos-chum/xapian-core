@@ -6,6 +6,7 @@ Release: 1
 License: GPLv2+
 Group: Applications/Databases
 URL: https://xapian.org/
+SCM: https://github.com/sailfishos-chum/xapian-core
 Sources:
     - xapian-core-%{version}.tar.xz
 #Requires:
@@ -27,11 +28,13 @@ Description: |
     Categories:
       - System
       - Utility
+    Custom:
+      Repo: https://git.xapian.org/xapian
+      PackagingRepo: https://github.com/sailfishos-chum/xapian-core
     Links:
       Homepage: %{url}
-      Help: https://www.lesbonscomptes.com/recoll/pages/documentation.html
-      Donation: https://www.lesbonscomptes.com/donations/index.html
     %endif
+SetupOptions: -q -n %{name}-%{version}/%{name}
 Files:
   - '%{_bindir}/*'
   - '%exclude %{_bindir}/xapian-config'
@@ -55,6 +58,9 @@ SubPackages:
           PackagedBy: nephros
           Categories:
             - Library
+          Custom:
+            Repo: https://git.xapian.org/xapian
+            PackagingRepo: https://github.com/sailfishos-chum/xapian-core
           Links:
             Homepage: %{url}
             Help: https://www.lesbonscomptes.com/recoll/pages/documentation.html
