@@ -1,0 +1,84 @@
+Name: xapian-core
+Summary: The Xapian Search Engine Library
+Name: xapian-core
+Version: 1.4.22
+Release: 1
+License: GPLv2+
+Group: Applications/Databases
+URL: https://xapian.org/
+SCM: https://github.com/sailfishos-chum/xapian-core
+Sources:
+    - xapian-core-%{version}.tar.xz
+#Requires:
+#    - ^^^
+#PkgBR:
+#    - ^^^
+PkgConfigBR:
+    - zlib
+Description: |
+    %{summary}.
+
+    Xapian is a highly adaptable toolkit which allows developers to easily
+    add advanced indexing and search facilities to their own applications.
+    It has built-in support for several families of weighting models and
+    also supports a rich set of boolean query operators.
+
+    %if "%{?vendor}" == "chum"
+    PackagedBy: nephros
+    Categories:
+      - System
+      - Utility
+    Custom:
+      Repo: https://git.xapian.org/xapian
+      PackagingRepo: https://github.com/sailfishos-chum/xapian-core
+    Links:
+      Homepage: %{url}
+    %endif
+SetupOptions: -q -n %{name}-%{version}/upstream
+Files:
+  - '%{_bindir}/*'
+  - '%exclude %{_bindir}/xapian-config'
+  - '%dir %{_datadir}/xapian-core'
+  - '%{_datadir}/xapian-core/stopwords/*.list'
+
+SubPackages:
+    - Name:       libs
+      Summary:    '%{summary}'
+      Group:      Development/Libraries
+      AutoDepend: false
+      Description: |
+          %{summary}.
+
+          Xapian is a highly adaptable toolkit which allows developers to easily
+          add advanced indexing and search facilities to their own applications.
+          It has built-in support for several families of weighting models and
+          also supports a rich set of boolean query operators.
+
+          %if "%{?vendor}" == "chum"
+          PackagedBy: nephros
+          Categories:
+            - Library
+          Custom:
+            Repo: https://git.xapian.org/xapian
+            PackagingRepo: https://github.com/sailfishos-chum/xapian-core
+          Links:
+            Homepage: %{url}
+            Help: https://www.lesbonscomptes.com/recoll/pages/documentation.html
+            Donation: https://www.lesbonscomptes.com/donations/index.html
+          %endif
+      Files:
+        - '%{_libdir}/*.so.*'
+    - Name:       devel
+      Summary:    Development files for %{name}
+      Group:      Development/Libraries
+      AutoDepend: false
+      Requires:
+        - '%{name}-libs'
+      Files:
+        - '%{_bindir}/xapian-config'
+        - '%{_includedir}/*'
+        - '%{_libdir}/*.so'
+        - '%{_libdir}/pkgconfig/*.pc'
+        - '%{_libdir}/cmake/xapian/*.cmake'
+        - '%{_datadir}/aclocal/xapian.m4'
+
